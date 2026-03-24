@@ -1,0 +1,33 @@
+body {
+    font-family: Arial;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    align-self: center;
+}
+button{
+    margin-left: 10px;
+
+}
+
+body {
+    background-image: url("Capture.PNG");
+    background-size: cover;       /* fills full screen */
+    background-position: center;  /* center image */
+    background-repeat: no-repeat; /* no repeating */
+}
