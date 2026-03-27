@@ -31,3 +31,33 @@ body {
     background-position: center;  /* center image */
     background-repeat: no-repeat; /* no repeating */
 }
+.completed{
+    text-decoration: line-through;
+    color: grey;
+}
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+li{
+    margin:8px 0;
+
+}
+button{
+    margin-left: 5px;
+    cursor: pointer;
+}

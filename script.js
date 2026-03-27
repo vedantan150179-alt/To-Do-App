@@ -1,28 +1,50 @@
 
 let addbtn = document.getElementById("addBtn");
 
+
 addbtn.addEventListener("click", function () {
     let taskInput = document.getElementById("taskInput");
     let taskText = taskInput.value;
-
-    if (taskText === "") {
+    if (taskText.trim() === "") {
         alert("Enter a task");
         return;
     }
-
+    
     let li = document.createElement("li");
-    li.innerText = taskText;
+    let span = document.createElement("span");
+    span.innerText = taskText;
+    li.appendChild(span);
 
     let deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete";
+    
+    let editBtn = document.createElement("button");
+    editBtn.innerText = "Edit";
+
 
     deleteBtn.addEventListener("click", function () {
         li.remove();
         saveTasks();
 });
-
-
 li.appendChild(deleteBtn);
+li.appendChild(editBtn);
+
+
+editBtn.addEventListener("click", function () {
+    let span = li.querySelector("span");
+    if(!span){
+        alert("Error: span not found");
+        return;
+    }
+
+    let newText = prompt("Edit your task:",span.innertext);
+
+    if (newText !== null && newText !== "") {
+        span.innerText = newText;
+        saveTasks();
+    }
+});
+
 
 li.addEventListener("click",function(e){
     if(e.target.tagName !=="BUTTON"){
@@ -30,14 +52,9 @@ li.addEventListener("click",function(e){
         saveTasks();
     }
 });
-// above this all the normal task is done 
-
-
 document.getElementById("taskList").appendChild(li);
 taskInput.value = "";
 saveTasks();
-
-
 // Below this it used to store the listed task 
 });
 function saveTasks(){
@@ -66,9 +83,16 @@ let allLi = document.querySelectorAll("#taskList li");
 
         li.addEventListener("click", function (e) {
             if (e.target.tagName !== "BUTTON") {
-                li.style.textDecoration = "line-through";
+                span.style.textDecoration = "line-through";
                 saveTasks();
             }
         });
     });
 }
+
+document.getElementById("clearAll").addEventListener("click" , function() {
+    document.getElementById("taskList").innerHTML = "";
+    localStorage.removeItem("tasks");
+});
+console.log("clear button conneted");
+
